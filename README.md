@@ -4,9 +4,23 @@ A Flask API that extracts clean subtitles from YouTube videos using yt-dlp.
 
 ## Quick Start
 
+### For ARM Architecture (Apple Silicon, Raspberry Pi, etc.)
+
 ```bash
 # Run the container
-docker run -d -p 5000:5000 u1ih/ytcc:latest
+docker run -d -p 5000:5000 u1ih/ytcc:arm
+
+# Test the API
+curl -X POST http://localhost:5000/extract-subtitles \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}'
+```
+
+### For x86/AMD64 Architecture (Intel/AMD processors)
+
+```bash
+# Run the container
+docker run -d -p 5000:5000 u1ih/ytcc:x86
 
 # Test the API
 curl -X POST http://localhost:5000/extract-subtitles \
@@ -25,23 +39,33 @@ curl -X POST http://localhost:5000/extract-subtitles \
 
 ### Using Docker (Recommended)
 
+#### For ARM Architecture (Apple Silicon, Raspberry Pi, etc.)
+
 ```bash
 # Pull the image from Docker Hub
-docker pull u1ih/ytcc:latest
+docker pull u1ih/ytcc:arm
 
 # Run the container
-docker run -d -p 5000:5000 u1ih/ytcc:latest
+docker run -d -p 5000:5000 u1ih/ytcc:arm
+```
+
+#### For x86/AMD64 Architecture (Intel/AMD processors)
+
+```bash
+# Pull the image from Docker Hub
+docker pull u1ih/ytcc:x86
+
+# Run the container
+docker run -d -p 5000:5000 u1ih/ytcc:x86
 ```
 
 #### Available Tags
 
-- `latest`: Always points to the most recent stable version
-- `1`: Version 1 release
+- `latest`: Always points to the most recent stable version (ARM)
+- `1`: Version 1 release (ARM)
 - `arm`: Specifically built for ARM architecture (Apple Silicon, Raspberry Pi, etc.)
-- `x86`: Specifically built for x86/amd64 architecture
+- `x86`: Specifically built for x86/amd64 architecture (Intel/AMD processors)
 - `1-x86`: Version 1 release for x86/amd64 architecture
-
-Choose the appropriate tag based on your system architecture:
 
 ### Building from Source
 

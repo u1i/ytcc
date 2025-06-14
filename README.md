@@ -37,7 +37,11 @@ docker run -d -p 5000:5000 u1ih/ytcc:latest
 
 - `latest`: Always points to the most recent stable version
 - `1`: Version 1 release
-- `arm`: Specifically tagged for ARM architecture
+- `arm`: Specifically built for ARM architecture (Apple Silicon, Raspberry Pi, etc.)
+- `x86`: Specifically built for x86/amd64 architecture
+- `1-x86`: Version 1 release for x86/amd64 architecture
+
+Choose the appropriate tag based on your system architecture:
 
 ### Building from Source
 
